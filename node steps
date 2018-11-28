@@ -1,0 +1,93 @@
+Contents	1. https://codeburst.io/build-a-simple-weather-app-with-node-js-in-just-16-lines-of-code-32261690901d
+	
+https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular
+---------------------------------------------- Console app --------------------------------------------------
+From command prompt > node --version
+
+	1. Go to a directory > npm init
+	2. Fill out the required information
+	3. Create a file index.js in the directory
+
+
+To make API call
+	1. Use nom module request > npm install request --save
+	2. Const   request   =  require ('request');
+	request(url, function (err, response, body) {
+		if(err){
+			console.log('error:', error);
+		} else {
+			console.log('body:', body);
+		}
+	});
+	
+	3. let weather = JSON.parse(body)
+	
+	
+	
+	4. To supply arguments
+	Npm install yargs --save
+	
+	5. Const yargs = require('yargs').argv;
+	
+	
+	
+---------------------------------------------- Web app --------------------------------------------------
+	1. npm install --save express
+
+	const express = require('express')
+	const app = express()
+	
+	app.get('/', function (req, res) {
+	  	//res.send('Hello World!')
+		res.sendFile('C:/Season/Fall18/FullStack/node-weather/index.html');
+	})
+	
+	app.listen(3000, function () {
+	  console.log('Example app listening on port 3000!')
+	})
+	
+	
+---------------------------------------------- ejs view --------------------------------------------------
+
+npm install ejs --save
+app.set('view engine', 'ejs')
+
+
+EJS is accessed by default in the views directory. So create a new folder named views in your directory. Within that views folder, add a file named index.ejs
+
+
+app.get('/', function (req, res) {
+  	//res.send('Hello World!')
+	   //res.sendFile('C:/Season/Fall18/FullStack/node-weather/index.html');
+	      res.render('index');
+
+})
+
+
+Instead of using res.send, we use res.render when working with a templating language. res.render will render our view, then send the equivalent HTML to the client.
+
+
+----------------------------------------------body parser --------------------------------------------------
+
+
+npm install body-parser --save
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+Mini Router
+https://stackoverflow.com/questions/28305120/differences-between-express-router-and-app-get
+
+
+
+
+
+
+
+
+
+
+	
+	
