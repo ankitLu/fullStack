@@ -1,0 +1,120 @@
+	1. npm install -g  @angular/cli
+
+-g is for global access
+
+	2. ng new angular-project
+
+ng g module new-module
+
+Running your Angular Application with the CLI
+(debug  mode)
+	3. ng serve
+	Check the angular server running at port 4200
+	
+
+To start in production mode or to build on disk
+Ng serve --prod
+Ng build  -- prod
+
+	4. Install express and nodemon
+	Npm install express nodemon --save
+	
+	5. Create server.js  at the angular-projectcode it like this:
+	6. Create directory server/routes/posts
+
+	7. Npm run build   // creates a dist directory
+
+	8. app.use(express.static(path.join(__dirname,'dist')));
+
+	9. App.use ("/posts",posts);
+	10. -
+	app.get("*", function (req,res){
+		res.sendFile(path.join(__dirname,'dist/index.html');
+	});
+	
+	
+	11. Nodemon server
+	12. ng g c posts // generate component
+	13. Edit app.module.ts
+	Add const Routes = [{path:'', redirectTo:'posts', pathMatch:'full'}, {path:'', component: PostsComponent}];
+	
+	14. Add routes
+	import { HttpClientModule } from '@angular/common/http';
+	import { RouterModule } from '@angular/router';
+	
+	15. Generate service
+	Ng g s service
+	
+	Write code in service
+	
+	16. Go to posts component
+	17. Inject service here
+	18. Do the service code
+
+	
+
+
+	
+	
+
+src-directory
+src/app-directory
+Inside of the app directory, you place all files that alter the look or functionality of your application. This includes components, modules, services, guards and pipes.
+
+Create components
+Ng g c posts
+
+Go to src/app/ app.module.ts
+Add routes
+
+
+
+
+Create service and inject into Component
+Ng g s posts
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------
+
+
+
+const express = require("express")
+const app = express();
+const path = require("path");
+
+const posts = require('./server/routes/posts');
+
+app.use(express.static(path.join(__dirname,'dist')));
+
+app.use('/posts',posts);
+
+
+
+// catch all other routes
+
+app.get('*', function (req,res){
+	res.sendFile(path.join(__dirname,'dist/index.html'));
+});
+
+app.listen(4600, function (req, res){
+	console.log("Server is running!");
+});
+
+
+
+
+const express = require("express");
+const router = express.Router();
+
+router.get('/', (req,res)=>{
+	res.send("POST WORKS");
+});
+
+
+module.exports = router;
